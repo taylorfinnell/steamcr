@@ -1,0 +1,25 @@
+name: steamcr
+version: 0.1.0
+
+authors:
+  - Taylor Finnell <tmfinnell@gmail.com>
+
+crystal: 0.23.1
+
+license: MIT
+
+dependencies:
+  json_mapping:
+    github: crystal-lang/json_mapping.cr
+  openssl_ext:
+    github: spider-gazelle/openssl_ext
+    version: 2.1.5
+  protobuf:
+    github: jeromegn/protobuf.cr
+  event_handler:
+    github: crystallabs/event_handler
+    version: ~> 1.0
+
+targets:
+  steamcr:
+    main: src/steamcr.cr
