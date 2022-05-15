@@ -14,10 +14,12 @@ module Steamcr
     #
     # @todo Add more servers
     def initialize
-      @servers = [
-        # 162.254.192.101:27019
-        Server.new("162.254.192.109", 27017),
-      ]
+      @servers = Array(Server).new
+      if (s = ENV["STEAMCR_SERVER"]?) && (port = ENV["STEAMCR_PORT"]?)
+        @servers.push Server.new(s, port.to_i)
+      else
+        @servers.push Server.new("162.254.192.109", 27017)
+      end
     end
 
     # Iterates over each Server in the list
