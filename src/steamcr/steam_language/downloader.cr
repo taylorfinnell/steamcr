@@ -2,28 +2,42 @@ require "http/client"
 require "json"
 require "base64"
 require "file_utils"
-require "json_mapping"
 
 module Steamcr::SteamLanguage
   class Downloader
     class File
-      JSON.mapping({
-        content:  String,
-        encoding: String,
-      })
+      include JSON::Serializable
+
+      @[JSON::Field]
+      @content : String
+
+      @[JSON::Field]
+      @encoding : String
+
+      property content
+      property encoding
     end
 
     class FileRef
-      JSON.mapping({
-        path: String,
-        url:  String?,
-      })
+      include JSON::Serializable
+
+      @[JSON::Field]
+      @path : String
+
+      @[JSON::Field]
+      @url : String
+
+      property url
+      property path
     end
 
     class ApiResponse
-      JSON.mapping({
-        tree: Array(FileRef),
-      })
+      include JSON::Serializable
+
+      @[JSON::Field]
+      @tree : Array(FileRef)
+
+      property tree
     end
 
     def download(location)
