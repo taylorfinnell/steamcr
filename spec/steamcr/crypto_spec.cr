@@ -8,8 +8,8 @@ module Steamcr
 
       str = "A" * 1024
 
-      x = crypto.encrypt(IO::Memory.new(str), key)
-      y = crypto.decrypt(IO::Memory.new(x), key)
+      x = crypto.encrypt(str.to_slice, key)
+      y = crypto.decrypt(x.to_slice, key)
       y.should eq(IO::Memory.new(str).to_slice)
     end
   end

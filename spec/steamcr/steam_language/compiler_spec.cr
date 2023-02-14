@@ -53,15 +53,29 @@ module Steamcr::SteamLanguage
                  class Test
                    def initialize
                    end
+
+                   def deserialize(io : IO::Memory)
+                   end
+
+                   def serialize(io : IO::Memory)
+                   end
                  end
                end
 
                module Steamcr
                  enum Sup
+                   def self.from_io(io, format)
+                     Sup.new(io.read_bytes(Int32))
+                   end
+
+                   def to_io(io, format)
+                     format.encode(self.value, io)
+                   end
                  end
                end
 
                T
+
         output.gets_to_end.should eq(code)
       end
     end
