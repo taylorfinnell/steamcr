@@ -140,9 +140,13 @@ module Steamcr
     MUST_AGREE_TO_SSA     = 118
     LAUNCHER_MIGRATED     = 119
     #  CURRENT_STEAM_REALM_DOES_NOT_MATCH = 120 # deprecated (renamed to SteamRealmMismatch)
-    STEAM_REALM_MISMATCH = 120
-    INVALID_SIGNATURE    = 121
-    PARSE_FAILURE        = 122
-    NO_VERIFIED_PHONE    = 123
+    STEAM_REALM_MISMATCH      = 120
+    INVALID_SIGNATURE         = 121
+    PARSE_FAILURE             = 122
+    NO_VERIFIED_PHONE         = 123
+    INSUFFICIENT_BATTERY      = 124
+    CHARGER_REQUIRED          = 125
+    CACHED_CREDENTIAL_INVALID = 126
+    PHONE_NUMBER_IS_VOIP      = 127
   end
 end
