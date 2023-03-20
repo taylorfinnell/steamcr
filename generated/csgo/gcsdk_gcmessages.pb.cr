@@ -1,38 +1,32 @@
-# # Generated from gcsdk_gcmessages.proto
+## Generated from gcsdk_gcmessages.proto
 require "protobuf"
 
 module Csgo
   enum GCClientLauncherType
-    GCClientLauncherTypeDEFAULT      = 0
+    GCClientLauncherTypeDEFAULT = 0
     GCClientLauncherTypePERFECTWORLD = 1
+    GCClientLauncherTypeSTEAMCHINA = 2
   end
   enum GCConnectionStatus
-    GCConnectionStatusHAVESESSION           = 0
-    GCConnectionStatusGCGOINGDOWN           = 1
-    GCConnectionStatusNOSESSION             = 2
+    GCConnectionStatusHAVESESSION = 0
+    GCConnectionStatusGCGOINGDOWN = 1
+    GCConnectionStatusNOSESSION = 2
     GCConnectionStatusNOSESSIONINLOGONQUEUE = 3
-    GCConnectionStatusNOSTEAM               = 4
+    GCConnectionStatusNOSTEAM = 4
   end
-  enum ESteamPaymentRuleType
-    KEPaymentRuleTypeComposite       = 0
-    KEPaymentRuleTypeWorkshop        = 1
-    KEPaymentRuleTypeServiceProvider = 2
-    KEPaymentRuleTypePartner         = 3
-    KEPaymentRuleTypeSpecialPayment  = 4
-  end
-
+  
   struct CMsgSOIDOwner
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :type, :uint32, 1
       optional :id, :uint64, 2
     end
   end
-
+  
   struct CMsgSOSingleObject
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :type_id, :int32, 2
       optional :object_data, :bytes, 3
@@ -40,81 +34,81 @@ module Csgo
       optional :owner_soid, CMsgSOIDOwner, 5
     end
   end
-
+  
   struct CMsgSOMultipleObjects
     include Protobuf::Message
-
+    
     struct SingleObject
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :type_id, :int32, 1
         optional :object_data, :bytes, 2
       end
     end
-
+    
     contract_of "proto2" do
       repeated :objects_modified, CMsgSOMultipleObjects::SingleObject, 2
       optional :version, :fixed64, 3
       optional :owner_soid, CMsgSOIDOwner, 6
     end
   end
-
+  
   struct CMsgSOCacheSubscribed
     include Protobuf::Message
-
+    
     struct SubscribedType
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :type_id, :int32, 1
         repeated :object_data, :bytes, 2
       end
     end
-
+    
     contract_of "proto2" do
       repeated :objects, CMsgSOCacheSubscribed::SubscribedType, 2
       optional :version, :fixed64, 3
       optional :owner_soid, CMsgSOIDOwner, 4
     end
   end
-
+  
   struct CMsgSOCacheUnsubscribed
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :owner_soid, CMsgSOIDOwner, 2
     end
   end
-
+  
   struct CMsgSOCacheSubscriptionCheck
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :version, :fixed64, 2
       optional :owner_soid, CMsgSOIDOwner, 3
     end
   end
-
+  
   struct CMsgSOCacheSubscriptionRefresh
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :owner_soid, CMsgSOIDOwner, 2
     end
   end
-
+  
   struct CMsgSOCacheVersion
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :version, :fixed64, 1
     end
   end
-
+  
   struct CMsgAccountDetails
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :valid, :bool, 1
       optional :account_name, :string, 2
@@ -136,10 +130,10 @@ module Csgo
       optional :eligible_for_community_market, :bool, 19
     end
   end
-
+  
   struct CMsgGCMultiplexMessage
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :msgtype, :uint32, 1
       optional :payload, :bytes, 2
@@ -147,42 +141,42 @@ module Csgo
       optional :replytogc, :bool, 4
     end
   end
-
+  
   struct CMsgGCMultiplexMessage_Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :msgtype, :uint32, 1
     end
   end
-
+  
   struct CGCToGCMsgMasterAck
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :dir_index, :uint32, 1
       optional :gc_type, :uint32, 2
     end
   end
-
+  
   struct CGCToGCMsgMasterAck_Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult, :int32, 1, default: 2
     end
   end
-
+  
   struct CGCToGCMsgMasterStartupComplete
     include Protobuf::Message
-
+    
     contract_of "proto2" do
     end
   end
-
+  
   struct CGCToGCMsgRouted
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :msg_type, :uint32, 1
       optional :sender_id, :fixed64, 2
@@ -190,53 +184,53 @@ module Csgo
       optional :ip, :uint32, 4
     end
   end
-
+  
   struct CGCToGCMsgRoutedReply
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :msg_type, :uint32, 1
       optional :net_message, :bytes, 2
     end
   end
-
+  
   struct CMsgGCUpdateSessionIP
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steamid, :fixed64, 1
       optional :ip, :fixed32, 2
     end
   end
-
+  
   struct CMsgGCRequestSessionIP
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steamid, :fixed64, 1
     end
   end
-
+  
   struct CMsgGCRequestSessionIPResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :ip, :fixed32, 1
     end
   end
-
+  
   struct CMsgSOCacheHaveVersion
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :soid, CMsgSOIDOwner, 1
       optional :version, :fixed64, 2
     end
   end
-
+  
   struct CMsgClientHello
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :version, :uint32, 1
       repeated :socache_have_versions, CMsgSOCacheHaveVersion, 2
@@ -249,10 +243,10 @@ module Csgo
       optional :steam_launcher, :uint32, 9
     end
   end
-
+  
   struct CMsgServerHello
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :version, :uint32, 1
       repeated :socache_have_versions, CMsgSOCacheHaveVersion, 2
@@ -263,20 +257,20 @@ module Csgo
       optional :steamdatagram_login, :bytes, 8
     end
   end
-
+  
   struct CMsgClientWelcome
     include Protobuf::Message
-
+    
     struct Location
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :latitude, :float, 1
         optional :longitude, :float, 2
         optional :country, :string, 3
       end
     end
-
+    
     contract_of "proto2" do
       optional :version, :uint32, 1
       optional :game_data, :bytes, 2
@@ -291,10 +285,10 @@ module Csgo
       optional :txn_country_code, :string, 11
     end
   end
-
+  
   struct CMsgConnectionStatus
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :status, GCConnectionStatus, 1, default: GCConnectionStatus::GCConnectionStatusHAVESESSION
       optional :client_session_need, :uint32, 2
@@ -304,58 +298,58 @@ module Csgo
       optional :estimated_wait_seconds_remaining, :int32, 6
     end
   end
-
+  
   struct CWorkshop_PopulateItemDescriptions_Request
     include Protobuf::Message
-
+    
     struct SingleItemDescription
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :gameitemid, :uint32, 1
         optional :item_description, :string, 2
         optional :one_per_account, :bool, 3
       end
     end
-
+    
     struct ItemDescriptionsLanguageBlock
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :language, :string, 1
-        repeated :descriptions, CWorkshop_PopulateItemDescriptions_Request::SingleItemDescription, 2
+        repeated :descriptions, CWorkshopPopulateItemDescriptionsRequest::SingleItemDescription, 2
       end
     end
-
+    
     contract_of "proto2" do
       optional :appid, :uint32, 1
-      repeated :languages, CWorkshop_PopulateItemDescriptions_Request::ItemDescriptionsLanguageBlock, 2
+      repeated :languages, CWorkshopPopulateItemDescriptionsRequest::ItemDescriptionsLanguageBlock, 2
     end
   end
-
+  
   struct CWorkshop_GetContributors_Request
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :appid, :uint32, 1
       optional :gameitemid, :uint32, 2
     end
   end
-
+  
   struct CWorkshop_GetContributors_Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       repeated :contributors, :fixed64, 1
     end
   end
-
+  
   struct CWorkshop_SetItemPaymentRules_Request
     include Protobuf::Message
-
+    
     struct WorkshopItemPaymentRule
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :workshop_file_id, :uint64, 1
         optional :revenue_percentage, :float, 2
@@ -363,47 +357,59 @@ module Csgo
         optional :rule_type, :uint32, 4, default: 1_u32
       end
     end
-
+    
+    struct WorkshopDirectPaymentRule
+      include Protobuf::Message
+      
+      contract_of "proto2" do
+        optional :workshop_file_id, :uint64, 1
+        optional :rule_description, :string, 2
+      end
+    end
+    
     struct PartnerItemPaymentRule
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :account_id, :uint32, 1
         optional :revenue_percentage, :float, 2
         optional :rule_description, :string, 3
       end
     end
-
+    
     contract_of "proto2" do
       optional :appid, :uint32, 1
       optional :gameitemid, :uint32, 2
-      repeated :associated_workshop_files, CWorkshop_SetItemPaymentRules_Request::WorkshopItemPaymentRule, 3
-      repeated :partner_accounts, CWorkshop_SetItemPaymentRules_Request::PartnerItemPaymentRule, 4
+      repeated :associated_workshop_files, CWorkshopSetItemPaymentRulesRequest::WorkshopItemPaymentRule, 3
+      repeated :partner_accounts, CWorkshopSetItemPaymentRulesRequest::PartnerItemPaymentRule, 4
+      optional :validate_only, :bool, 5
+      optional :make_workshop_files_subscribable, :bool, 6
+      optional :associated_workshop_file_for_direct_payments, CWorkshopSetItemPaymentRulesRequest::WorkshopDirectPaymentRule, 7
     end
   end
-
+  
   struct CWorkshop_SetItemPaymentRules_Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
     end
   end
-
+  
   struct CGameServers_AggregationQuery_Request
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :filter, :string, 1
       repeated :group_fields, :string, 3
     end
   end
-
+  
   struct CGameServers_AggregationQuery_Response
     include Protobuf::Message
-
+    
     struct Group
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         repeated :group_values, :string, 1
         optional :servers_empty, :uint32, 2
@@ -414,15 +420,15 @@ module Csgo
         optional :player_capacity, :uint32, 7
       end
     end
-
+    
     contract_of "proto2" do
-      repeated :groups, CGameServers_AggregationQuery_Response::Group, 1
+      repeated :groups, CGameServersAggregationQueryResponse::Group, 1
     end
   end
-
+  
   struct CWorkshop_AddSpecialPayment_Request
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :appid, :uint32, 1
       optional :gameitemid, :uint32, 2
@@ -431,46 +437,46 @@ module Csgo
       optional :payment_row_usd, :uint64, 5
     end
   end
-
+  
   struct CWorkshop_AddSpecialPayment_Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
     end
   end
-
+  
   struct CProductInfo_SetRichPresenceLocalization_Request
     include Protobuf::Message
-
+    
     struct Token
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :token, :string, 1
         optional :value, :string, 2
       end
     end
-
+    
     struct LanguageSection
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :language, :string, 1
-        repeated :tokens, CProductInfo_SetRichPresenceLocalization_Request::Token, 2
+        repeated :tokens, CProductInfoSetRichPresenceLocalizationRequest::Token, 2
       end
     end
-
+    
     contract_of "proto2" do
       optional :appid, :uint32, 1
-      repeated :languages, CProductInfo_SetRichPresenceLocalization_Request::LanguageSection, 2
+      repeated :languages, CProductInfoSetRichPresenceLocalizationRequest::LanguageSection, 2
       optional :steamid, :uint64, 3
     end
   end
-
+  
   struct CProductInfo_SetRichPresenceLocalization_Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
     end
   end
-end
+  end

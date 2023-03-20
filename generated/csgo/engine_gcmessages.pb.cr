@@ -1,10 +1,11 @@
-# # Generated from engine_gcmessages.proto
+## Generated from engine_gcmessages.proto
 require "protobuf"
 
 module Csgo
+  
   struct CEngineGotvSyncPacket
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :match_id, :uint64, 1
       optional :instance_id, :uint32, 2
@@ -18,4 +19,4 @@ module Csgo
       optional :cdndelay, :uint32, 11
     end
   end
-end
+  end

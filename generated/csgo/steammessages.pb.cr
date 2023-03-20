@@ -1,18 +1,18 @@
-# # Generated from steammessages.proto
+## Generated from steammessages.proto
 require "protobuf"
 
 module Csgo
   enum GCProtoBufMsgSrc
     GCProtoBufMsgSrcUnspecified = 0
-    GCProtoBufMsgSrcFromSystem  = 1
+    GCProtoBufMsgSrcFromSystem = 1
     GCProtoBufMsgSrcFromSteamID = 2
-    GCProtoBufMsgSrcFromGC      = 3
+    GCProtoBufMsgSrcFromGC = 3
     GCProtoBufMsgSrcReplySystem = 4
   end
-
+  
   struct CMsgProtoBufHeader
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :client_steam_id, :fixed64, 1
       optional :client_session_id, :int32, 2
@@ -27,10 +27,10 @@ module Csgo
       optional :gc_dir_index_source, :uint32, 201
     end
   end
-
+  
   struct CMsgWebAPIKey
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :status, :uint32, 1, default: 255_u32
       optional :account_id, :uint32, 2, default: 0_u32
@@ -39,28 +39,28 @@ module Csgo
       optional :domain, :string, 5
     end
   end
-
+  
   struct CMsgHttpRequest
     include Protobuf::Message
-
+    
     struct RequestHeader
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :name, :string, 1
         optional :value, :string, 2
       end
     end
-
+    
     struct QueryParam
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :name, :string, 1
         optional :value, :bytes, 2
       end
     end
-
+    
     contract_of "proto2" do
       optional :request_method, :uint32, 1
       optional :hostname, :string, 2
@@ -72,10 +72,10 @@ module Csgo
       optional :absolute_timeout, :uint32, 8
     end
   end
-
+  
   struct CMsgWebAPIRequest
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :unused_job_name, :string, 1
       optional :interface_name, :string, 2
@@ -86,46 +86,46 @@ module Csgo
       optional :routing_app_id, :uint32, 7
     end
   end
-
+  
   struct CMsgHttpResponse
     include Protobuf::Message
-
+    
     struct ResponseHeader
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :name, :string, 1
         optional :value, :string, 2
       end
     end
-
+    
     contract_of "proto2" do
       optional :status_code, :uint32, 1
       repeated :headers, CMsgHttpResponse::ResponseHeader, 2
       optional :body, :bytes, 3
     end
   end
-
+  
   struct CMsgAMFindAccounts
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :search_type, :uint32, 1
       optional :search_string, :string, 2
     end
   end
-
+  
   struct CMsgAMFindAccountsResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       repeated :steam_id, :fixed64, 1
     end
   end
-
+  
   struct CMsgNotifyWatchdog
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :source, :uint32, 1
       optional :alert_type, :uint32, 2
@@ -136,152 +136,152 @@ module Csgo
       optional :text, :string, 7
     end
   end
-
+  
   struct CMsgAMGetLicenses
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steamid, :fixed64, 1
     end
   end
-
+  
   struct CMsgPackageLicense
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :package_id, :uint32, 1
       optional :time_created, :uint32, 2
       optional :owner_id, :uint32, 3
     end
   end
-
+  
   struct CMsgAMGetLicensesResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       repeated :license, CMsgPackageLicense, 1
       optional :result, :uint32, 2
     end
   end
-
+  
   struct CMsgAMGetUserGameStats
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steam_id, :fixed64, 1
       optional :game_id, :fixed64, 2
       repeated :stats, :uint32, 3
     end
   end
-
+  
   struct CMsgAMGetUserGameStatsResponse
     include Protobuf::Message
-
+    
     struct Stats
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :stat_id, :uint32, 1
         optional :stat_value, :uint32, 2
       end
     end
-
+    
     struct Achievement_Blocks
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :achievement_id, :uint32, 1
         optional :achievement_bit_id, :uint32, 2
         optional :unlock_time, :fixed32, 3
       end
     end
-
+    
     contract_of "proto2" do
       optional :steam_id, :fixed64, 1
       optional :game_id, :fixed64, 2
       optional :eresult, :int32, 3, default: 2
       repeated :stats, CMsgAMGetUserGameStatsResponse::Stats, 4
-      repeated :achievement_blocks, CMsgAMGetUserGameStatsResponse::Achievement_Blocks, 5
+      repeated :achievement_blocks, CMsgAMGetUserGameStatsResponse::AchievementBlocks, 5
     end
   end
-
+  
   struct CMsgGCGetCommandList
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :app_id, :uint32, 1
       optional :command_prefix, :string, 2
     end
   end
-
+  
   struct CMsgGCGetCommandListResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       repeated :command_name, :string, 1
     end
   end
-
+  
   struct CGCMsgMemCachedGet
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       repeated :keys, :string, 1
     end
   end
-
+  
   struct CGCMsgMemCachedGetResponse
     include Protobuf::Message
-
+    
     struct ValueTag
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :found, :bool, 1
         optional :value, :bytes, 2
       end
     end
-
+    
     contract_of "proto2" do
       repeated :values, CGCMsgMemCachedGetResponse::ValueTag, 1
     end
   end
-
+  
   struct CGCMsgMemCachedSet
     include Protobuf::Message
-
+    
     struct KeyPair
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :name, :string, 1
         optional :value, :bytes, 2
       end
     end
-
+    
     contract_of "proto2" do
       repeated :keys, CGCMsgMemCachedSet::KeyPair, 1
     end
   end
-
+  
   struct CGCMsgMemCachedDelete
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       repeated :keys, :string, 1
     end
   end
-
+  
   struct CGCMsgMemCachedStats
     include Protobuf::Message
-
+    
     contract_of "proto2" do
     end
   end
-
+  
   struct CGCMsgMemCachedStatsResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :curr_connections, :uint64, 1
       optional :cmd_get, :uint64, 2
@@ -299,18 +299,18 @@ module Csgo
       optional :bytes, :uint64, 14
     end
   end
-
+  
   struct CGCMsgSQLStats
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :schema_catalog, :uint32, 1
     end
   end
-
+  
   struct CGCMsgSQLStatsResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :threads, :uint32, 1
       optional :threads_connected, :uint32, 2
@@ -323,10 +323,10 @@ module Csgo
       optional :errors, :uint32, 9
     end
   end
-
+  
   struct CMsgAMAddFreeLicense
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steamid, :fixed64, 1
       optional :ip_public, :uint32, 2
@@ -334,28 +334,28 @@ module Csgo
       optional :store_country_code, :string, 4
     end
   end
-
+  
   struct CMsgAMAddFreeLicenseResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult, :int32, 1, default: 2
       optional :purchase_result_detail, :int32, 2
       optional :transid, :fixed64, 3
     end
   end
-
+  
   struct CGCMsgGetIPLocation
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       repeated :ips, :fixed32, 1
     end
   end
-
+  
   struct CIPLocationInfo
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :ip, :uint32, 1
       optional :latitude, :float, 2
@@ -365,34 +365,34 @@ module Csgo
       optional :city, :string, 6
     end
   end
-
+  
   struct CGCMsgGetIPLocationResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       repeated :infos, CIPLocationInfo, 1
     end
   end
-
+  
   struct CGCMsgSystemStatsSchema
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :gc_app_id, :uint32, 1
       optional :schema_kv, :bytes, 2
     end
   end
-
+  
   struct CGCMsgGetSystemStats
     include Protobuf::Message
-
+    
     contract_of "proto2" do
     end
   end
-
+  
   struct CGCMsgGetSystemStatsResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :gc_app_id, :uint32, 1
       optional :stats_kv, :bytes, 2
@@ -409,28 +409,28 @@ module Csgo
       optional :logon_jobs, :uint32, 13
     end
   end
-
+  
   struct CMsgAMSendEmail
     include Protobuf::Message
-
+    
     struct ReplacementToken
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :token_name, :string, 1
         optional :token_value, :string, 2
       end
     end
-
+    
     struct PersonaNameReplacementToken
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :steamid, :fixed64, 1
         optional :token_name, :string, 2
       end
     end
-
+    
     contract_of "proto2" do
       optional :steamid, :fixed64, 1
       optional :email_msg_type, :uint32, 2
@@ -440,18 +440,18 @@ module Csgo
       repeated :tokens, CMsgAMSendEmail::ReplacementToken, 7
     end
   end
-
+  
   struct CMsgAMSendEmailResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult, :uint32, 1, default: 2_u32
     end
   end
-
+  
   struct CMsgGCGetEmailTemplate
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :app_id, :uint32, 1
       optional :email_msg_type, :uint32, 2
@@ -459,20 +459,20 @@ module Csgo
       optional :email_format, :int32, 4
     end
   end
-
+  
   struct CMsgGCGetEmailTemplateResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult, :uint32, 1, default: 2_u32
       optional :template_exists, :bool, 2
       optional :template, :string, 3
     end
   end
-
+  
   struct CMsgAMGrantGuestPasses2
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steam_id, :fixed64, 1
       optional :package_id, :uint32, 2
@@ -481,28 +481,28 @@ module Csgo
       optional :action, :int32, 5
     end
   end
-
+  
   struct CMsgAMGrantGuestPasses2Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult, :int32, 1, default: 2
       optional :passes_granted, :int32, 2, default: 0
     end
   end
-
+  
   struct CGCSystemMsg_GetAccountDetails
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steamid, :fixed64, 1
       optional :appid, :uint32, 2
     end
   end
-
+  
   struct CGCSystemMsg_GetAccountDetails_Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult_deprecated, :uint32, 1, default: 2_u32
       optional :account_name, :string, 2
@@ -538,59 +538,61 @@ module Csgo
       optional :rt_identity_linked, :uint32, 35
       optional :rt_birth_date, :uint32, 36
       optional :txn_country_code, :string, 37
+      optional :has_accepted_china_ssa, :bool, 38
+      optional :is_banned_steam_china, :bool, 39
     end
   end
-
+  
   struct CMsgGCGetPersonaNames
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       repeated :steamids, :fixed64, 1
     end
   end
-
+  
   struct CMsgGCGetPersonaNames_Response
     include Protobuf::Message
-
+    
     struct PersonaName
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :steamid, :fixed64, 1
         optional :persona_name, :string, 2
       end
     end
-
+    
     contract_of "proto2" do
-      repeated :succeeded_lookups, CMsgGCGetPersonaNames_Response::PersonaName, 1
+      repeated :succeeded_lookups, CMsgGCGetPersonaNamesResponse::PersonaName, 1
       repeated :failed_lookup_steamids, :fixed64, 2
     end
   end
-
+  
   struct CMsgGCCheckFriendship
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steamid_left, :fixed64, 1
       optional :steamid_right, :fixed64, 2
     end
   end
-
+  
   struct CMsgGCCheckFriendship_Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :success, :bool, 1
       optional :found_friendship, :bool, 2
     end
   end
-
+  
   struct CMsgGCMsgMasterSetDirectory
     include Protobuf::Message
-
+    
     struct SubGC
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :dir_index, :uint32, 1
         optional :name, :string, 2
@@ -599,40 +601,41 @@ module Csgo
         optional :gc_binary, :string, 5
       end
     end
-
+    
     contract_of "proto2" do
       optional :master_dir_index, :uint32, 1
       repeated :dir, CMsgGCMsgMasterSetDirectory::SubGC, 2
     end
   end
-
+  
   struct CMsgGCMsgMasterSetDirectory_Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult, :int32, 1, default: 2
+      optional :message, :string, 2
     end
   end
-
+  
   struct CMsgGCMsgWebAPIJobRequestForwardResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :dir_index, :uint32, 1
     end
   end
-
+  
   struct CGCSystemMsg_GetPurchaseTrust_Request
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steamid, :fixed64, 1
     end
   end
-
+  
   struct CGCSystemMsg_GetPurchaseTrust_Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :has_prior_purchase_history, :bool, 1
       optional :has_no_recent_password_resets, :bool, 2
@@ -640,10 +643,10 @@ module Csgo
       optional :time_all_trusted, :uint32, 4
     end
   end
-
+  
   struct CMsgGCHAccountVacStatusChange
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steam_id, :fixed64, 1
       optional :app_id, :uint32, 2
@@ -652,18 +655,18 @@ module Csgo
       optional :is_banned_future, :bool, 5
     end
   end
-
+  
   struct CMsgGCGetPartnerAccountLink
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steamid, :fixed64, 1
     end
   end
-
+  
   struct CMsgGCGetPartnerAccountLink_Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :pwid, :uint32, 1
       optional :nexonid, :uint32, 2
@@ -672,17 +675,17 @@ module Csgo
       optional :is_adult, :bool, 5
     end
   end
-
+  
   struct CMsgGCRoutingInfo
     include Protobuf::Message
     enum RoutingMethod
-      RANDOM              = 0
-      DISCARD             = 1
-      CLIENTSTEAMID       = 2
+      RANDOM = 0
+      DISCARD = 1
+      CLIENTSTEAMID = 2
       PROTOBUFFIELDUINT64 = 3
-      WEBAPIPARAMUINT64   = 4
+      WEBAPIPARAMUINT64 = 4
     end
-
+    
     contract_of "proto2" do
       repeated :dir_index, :uint32, 1
       optional :method, CMsgGCRoutingInfo::RoutingMethod, 2, default: CMsgGCRoutingInfo::RoutingMethod::RANDOM
@@ -691,94 +694,94 @@ module Csgo
       optional :webapi_param, :string, 5
     end
   end
-
+  
   struct CMsgGCMsgMasterSetWebAPIRouting
     include Protobuf::Message
-
+    
     struct Entry
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :interface_name, :string, 1
         optional :method_name, :string, 2
         optional :routing, CMsgGCRoutingInfo, 3
       end
     end
-
+    
     contract_of "proto2" do
       repeated :entries, CMsgGCMsgMasterSetWebAPIRouting::Entry, 1
     end
   end
-
+  
   struct CMsgGCMsgMasterSetClientMsgRouting
     include Protobuf::Message
-
+    
     struct Entry
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :msg_type, :uint32, 1
         optional :routing, CMsgGCRoutingInfo, 2
       end
     end
-
+    
     contract_of "proto2" do
       repeated :entries, CMsgGCMsgMasterSetClientMsgRouting::Entry, 1
     end
   end
-
+  
   struct CMsgGCMsgMasterSetWebAPIRouting_Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult, :int32, 1, default: 2
     end
   end
-
+  
   struct CMsgGCMsgMasterSetClientMsgRouting_Response
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult, :int32, 1, default: 2
     end
   end
-
+  
   struct CMsgGCMsgSetOptions
     include Protobuf::Message
     enum Option
-      NOTIFYUSERSESSIONS   = 0
+      NOTIFYUSERSESSIONS = 0
       NOTIFYSERVERSESSIONS = 1
-      NOTIFYACHIEVEMENTS   = 2
-      NOTIFYVACACTION      = 3
+      NOTIFYACHIEVEMENTS = 2
+      NOTIFYVACACTION = 3
     end
-
+    
     struct MessageRange
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         required :low, :uint32, 1
         required :high, :uint32, 2
       end
     end
-
+    
     contract_of "proto2" do
       repeated :options, CMsgGCMsgSetOptions::Option, 1
       repeated :client_msg_ranges, CMsgGCMsgSetOptions::MessageRange, 2
     end
   end
-
+  
   struct CMsgGCHUpdateSession
     include Protobuf::Message
-
+    
     struct ExtraField
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :name, :string, 1
         optional :value, :string, 2
       end
     end
-
+    
     contract_of "proto2" do
       optional :steam_id, :fixed64, 1
       optional :app_id, :uint32, 2
@@ -795,32 +798,32 @@ module Csgo
       repeated :depot_ids, :uint32, 13
     end
   end
-
+  
   struct CMsgNotificationOfSuspiciousActivity
     include Protobuf::Message
-
+    
     struct MultipleGameInstances
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :app_instance_count, :uint32, 1
         repeated :other_steamids, :fixed64, 2
       end
     end
-
+    
     contract_of "proto2" do
       optional :steamid, :fixed64, 1
       optional :appid, :uint32, 2
       optional :multiple_instances, CMsgNotificationOfSuspiciousActivity::MultipleGameInstances, 3
     end
   end
-
+  
   struct CMsgDPPartnerMicroTxns
     include Protobuf::Message
-
+    
     struct PartnerMicroTxn
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :init_time, :uint32, 1
         optional :last_update_time, :uint32, 2
@@ -841,10 +844,10 @@ module Csgo
         optional :ref_trans_id, :uint64, 17
       end
     end
-
+    
     struct PartnerInfo
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :partner_id, :uint32, 1
         optional :partner_name, :string, 2
@@ -852,7 +855,7 @@ module Csgo
         optional :currency_name, :string, 4
       end
     end
-
+    
     contract_of "proto2" do
       optional :appid, :uint32, 1
       optional :gc_name, :string, 2
@@ -860,24 +863,42 @@ module Csgo
       repeated :transactions, CMsgDPPartnerMicroTxns::PartnerMicroTxn, 4
     end
   end
-
+  
   struct CMsgDPPartnerMicroTxnsResponse
     include Protobuf::Message
     enum EErrorCode
-      KMsgValid                   = 0
-      KMsgInvalidAppID            = 1
-      KMsgInvalidPartnerInfo      = 2
-      KMsgNoTransactions          = 3
-      KMsgSQLFailure              = 4
-      KMsgPartnerInfoDiscrepancy  = 5
+      KMsgValid = 0
+      KMsgInvalidAppID = 1
+      KMsgInvalidPartnerInfo = 2
+      KMsgNoTransactions = 3
+      KMsgSQLFailure = 4
+      KMsgPartnerInfoDiscrepancy = 5
       KMsgTransactionInsertFailed = 7
-      KMsgAlreadyRunning          = 8
-      KMsgInvalidTransactionData  = 9
+      KMsgAlreadyRunning = 8
+      KMsgInvalidTransactionData = 9
     end
-
+    
     contract_of "proto2" do
       optional :eresult, :uint32, 1, default: 2_u32
       optional :eerrorcode, CMsgDPPartnerMicroTxnsResponse::EErrorCode, 2, default: CMsgDPPartnerMicroTxnsResponse::EErrorCode::KMsgValid
     end
   end
-end
+  
+  struct CChinaAgreementSessions_StartAgreementSessionInGame_Request
+    include Protobuf::Message
+    
+    contract_of "proto2" do
+      optional :appid, :uint32, 1
+      optional :steamid, :fixed64, 2
+      optional :client_ipaddress, :string, 3
+    end
+  end
+  
+  struct CChinaAgreementSessions_StartAgreementSessionInGame_Response
+    include Protobuf::Message
+    
+    contract_of "proto2" do
+      optional :agreement_url, :string, 1
+    end
+  end
+  end

@@ -1,20 +1,21 @@
-# # Generated from steammessages_clientserver.proto
+## Generated from steammessages_clientserver.proto
 require "protobuf"
 
 module Steam
+  
   struct CMsgClientRegisterAuthTicketWithCM
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :protocol_version, :uint32, 1
       optional :ticket, :bytes, 3
       optional :client_instance_id, :uint64, 4
     end
   end
-
+  
   struct CMsgClientTicketAuthComplete
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steam_id, :fixed64, 1
       optional :game_id, :fixed64, 2
@@ -26,10 +27,10 @@ module Steam
       optional :owner_steam_id, :fixed64, 8
     end
   end
-
+  
   struct CMsgClientCMList
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       repeated :cm_addresses, :uint32, 1
       repeated :cm_ports, :uint32, 2
@@ -37,10 +38,10 @@ module Steam
       optional :percent_default_to_websocket, :uint32, 4
     end
   end
-
+  
   struct CMsgClientP2PConnectionInfo
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steam_id_dest, :fixed64, 1
       optional :steam_id_src, :fixed64, 2
@@ -50,10 +51,10 @@ module Steam
       optional :rendezvous, :bytes, 6
     end
   end
-
+  
   struct CMsgClientP2PConnectionFailInfo
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steam_id_dest, :fixed64, 1
       optional :steam_id_src, :fixed64, 2
@@ -64,83 +65,93 @@ module Steam
       optional :close_message, :string, 8
     end
   end
-
+  
   struct CMsgClientNetworkingCertRequest
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :key_data, :bytes, 2
       optional :app_id, :uint32, 3
     end
   end
-
+  
   struct CMsgClientNetworkingCertReply
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :cert, :bytes, 4
       optional :ca_key_id, :fixed64, 5
       optional :ca_signature, :bytes, 6
     end
   end
-
+  
   struct CMsgClientNetworkingMobileCertRequest
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :app_id, :uint32, 1
     end
   end
-
+  
   struct CMsgClientNetworkingMobileCertReply
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :encoded_cert, :string, 1
     end
   end
-
+  
   struct CMsgClientGetAppOwnershipTicket
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :app_id, :uint32, 1
     end
   end
-
+  
   struct CMsgClientGetAppOwnershipTicketResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult, :uint32, 1, default: 2_u32
       optional :app_id, :uint32, 2
       optional :ticket, :bytes, 3
     end
   end
-
+  
   struct CMsgClientSessionToken
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :token, :uint64, 1
     end
   end
-
+  
   struct CMsgClientGameConnectTokens
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :max_tokens_to_keep, :uint32, 1, default: 10_u32
       repeated :tokens, :bytes, 2
     end
   end
-
+  
   struct CMsgClientGamesPlayed
     include Protobuf::Message
-
+    
+    struct ProcessInfo
+      include Protobuf::Message
+      
+      contract_of "proto2" do
+        optional :process_id, :uint32, 1
+        optional :process_id_parent, :uint32, 2
+        optional :parent_is_steam, :bool, 3
+      end
+    end
+    
     struct GamePlayed
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :steam_id_gs, :uint64, 1
         optional :game_id, :fixed64, 2
@@ -172,9 +183,11 @@ module Steam
         optional :compat_tool_cmd, :string, 28
         optional :compat_tool_build_id, :uint32, 29
         optional :beta_name, :string, 30
+        optional :dlc_context, :uint32, 31
+        repeated :process_id_list, CMsgClientGamesPlayed::ProcessInfo, 32
       end
     end
-
+    
     contract_of "proto2" do
       repeated :games_played, CMsgClientGamesPlayed::GamePlayed, 1
       optional :client_os_type, :uint32, 2
@@ -182,38 +195,38 @@ module Steam
       optional :recent_reauthentication, :bool, 4
     end
   end
-
+  
   struct CMsgGSApprove
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steam_id, :fixed64, 1
       optional :owner_steam_id, :fixed64, 2
     end
   end
-
+  
   struct CMsgGSDeny
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steam_id, :fixed64, 1
       optional :edeny_reason, :int32, 2
       optional :deny_string, :string, 3
     end
   end
-
+  
   struct CMsgGSKick
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steam_id, :fixed64, 1
       optional :edeny_reason, :int32, 2
     end
   end
-
+  
   struct CMsgClientAuthList
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :tokens_left, :uint32, 1
       optional :last_request_seq, :uint32, 2
@@ -223,23 +236,23 @@ module Steam
       optional :message_sequence, :uint32, 6
     end
   end
-
+  
   struct CMsgClientAuthListAck
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       repeated :ticket_crc, :uint32, 1
       repeated :app_ids, :uint32, 2
       optional :message_sequence, :uint32, 3
     end
   end
-
+  
   struct CMsgClientLicenseList
     include Protobuf::Message
-
+    
     struct License
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :package_id, :uint32, 1
         optional :time_created, :fixed32, 2
@@ -261,16 +274,16 @@ module Steam
         optional :master_package_id, :uint32, 18
       end
     end
-
+    
     contract_of "proto2" do
       optional :eresult, :int32, 1, default: 2
       repeated :licenses, CMsgClientLicenseList::License, 2
     end
   end
-
+  
   struct CMsgClientIsLimitedAccount
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :bis_limited_account, :bool, 1
       optional :bis_community_banned, :bool, 2
@@ -278,30 +291,30 @@ module Steam
       optional :bis_limited_account_allowed_to_invite_friends, :bool, 4
     end
   end
-
+  
   struct CMsgClientRequestedClientStats
     include Protobuf::Message
-
+    
     struct StatsToSend
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :client_stat, :uint32, 1
         optional :stat_aggregate_method, :uint32, 2
       end
     end
-
+    
     contract_of "proto2" do
       repeated :stats_to_send, CMsgClientRequestedClientStats::StatsToSend, 1
     end
   end
-
+  
   struct CMsgClientStat2
     include Protobuf::Message
-
+    
     struct StatDetail
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :client_stat, :uint32, 1
         optional :ll_value, :int64, 2
@@ -311,15 +324,15 @@ module Steam
         optional :app_id, :uint32, 6
       end
     end
-
+    
     contract_of "proto2" do
       repeated :stat_detail, CMsgClientStat2::StatDetail, 1
     end
   end
-
+  
   struct CMsgClientInviteToGame
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steam_id_dest, :fixed64, 1
       optional :steam_id_src, :fixed64, 2
@@ -327,10 +340,10 @@ module Steam
       optional :remote_play, :string, 4
     end
   end
-
+  
   struct CMsgClientChatInvite
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steam_id_invited, :fixed64, 1
       optional :steam_id_chat, :fixed64, 2
@@ -341,13 +354,13 @@ module Steam
       optional :game_id, :fixed64, 7
     end
   end
-
+  
   struct CMsgClientConnectionStats
     include Protobuf::Message
-
+    
     struct Stats_Logon
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :connect_attempts, :int32, 1
         optional :connect_successes, :int32, 2
@@ -362,10 +375,10 @@ module Steam
         optional :no_websocket_non_443_connectivity, :bool, 11
       end
     end
-
+    
     struct Stats_UDP
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :pkts_sent, :uint64, 1
         optional :bytes_sent, :uint64, 2
@@ -374,14 +387,14 @@ module Steam
         optional :bytes_recv, :uint64, 5
       end
     end
-
+    
     struct Stats_VConn
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :connections_udp, :uint32, 1
         optional :connections_tcp, :uint32, 2
-        optional :stats_udp, CMsgClientConnectionStats::Stats_UDP, 3
+        optional :stats_udp, CMsgClientConnectionStats::StatsUDP, 3
         optional :pkts_abandoned, :uint64, 4
         optional :conn_req_received, :uint64, 5
         optional :pkts_resent, :uint64, 6
@@ -401,61 +414,61 @@ module Steam
         optional :mem_pool_msg_in_use, :uint32, 20
       end
     end
-
+    
     contract_of "proto2" do
-      optional :stats_logon, CMsgClientConnectionStats::Stats_Logon, 1
-      optional :stats_vconn, CMsgClientConnectionStats::Stats_VConn, 2
+      optional :stats_logon, CMsgClientConnectionStats::StatsLogon, 1
+      optional :stats_vconn, CMsgClientConnectionStats::StatsVConn, 2
     end
   end
-
+  
   struct CMsgClientServersAvailable
     include Protobuf::Message
-
+    
     struct Server_Types_Available
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :server, :uint32, 1
         optional :changed, :bool, 2
       end
     end
-
+    
     contract_of "proto2" do
-      repeated :server_types_available, CMsgClientServersAvailable::Server_Types_Available, 1
+      repeated :server_types_available, CMsgClientServersAvailable::ServerTypesAvailable, 1
       optional :server_type_for_auth_services, :uint32, 2
     end
   end
-
+  
   struct CMsgClientReportOverlayDetourFailure
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       repeated :failure_strings, :string, 1
     end
   end
-
+  
   struct CMsgClientRequestEncryptedAppTicket
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :app_id, :uint32, 1
       optional :userdata, :bytes, 2
     end
   end
-
+  
   struct CMsgClientRequestEncryptedAppTicketResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :app_id, :uint32, 1
       optional :eresult, :int32, 2, default: 2
       optional :encrypted_app_ticket, EncryptedAppTicket, 3
     end
   end
-
+  
   struct CMsgClientWalletInfoUpdate
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :has_wallet, :bool, 1
       optional :balance, :int32, 2
@@ -466,93 +479,93 @@ module Steam
       optional :realm, :int32, 7
     end
   end
-
+  
   struct CMsgClientAMGetClanOfficers
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steamid_clan, :fixed64, 1
     end
   end
-
+  
   struct CMsgClientAMGetClanOfficersResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult, :int32, 1, default: 2
       optional :steamid_clan, :fixed64, 2
       optional :officer_count, :int32, 3
     end
   end
-
+  
   struct CMsgClientAMGetPersonaNameHistory
     include Protobuf::Message
-
+    
     struct IdInstance
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :steamid, :fixed64, 1
       end
     end
-
+    
     contract_of "proto2" do
       optional :id_count, :int32, 1
       repeated :ids, CMsgClientAMGetPersonaNameHistory::IdInstance, 2
     end
   end
-
+  
   struct CMsgClientAMGetPersonaNameHistoryResponse
     include Protobuf::Message
-
+    
     struct NameTableInstance
       include Protobuf::Message
-
+      
       struct NameInstance
         include Protobuf::Message
-
+        
         contract_of "proto2" do
           optional :name_since, :fixed32, 1
           optional :name, :string, 2
         end
       end
-
+      
       contract_of "proto2" do
         optional :eresult, :int32, 1, default: 2
         optional :steamid, :fixed64, 2
         repeated :names, CMsgClientAMGetPersonaNameHistoryResponse::NameTableInstance::NameInstance, 3
       end
     end
-
+    
     contract_of "proto2" do
       repeated :responses, CMsgClientAMGetPersonaNameHistoryResponse::NameTableInstance, 2
     end
   end
-
+  
   struct CMsgClientDeregisterWithServer
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eservertype, :uint32, 1
       optional :app_id, :uint32, 2
     end
   end
-
+  
   struct CMsgClientClanState
     include Protobuf::Message
-
+    
     struct NameInfo
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :clan_name, :string, 1
         optional :sha_avatar, :bytes, 2
       end
     end
-
+    
     struct UserCounts
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :members, :uint32, 1
         optional :online, :uint32, 2
@@ -561,10 +574,10 @@ module Steam
         optional :chat_room_members, :uint32, 5
       end
     end
-
+    
     struct Event
       include Protobuf::Message
-
+      
       contract_of "proto2" do
         optional :gid, :fixed64, 1
         optional :event_time, :uint32, 2
@@ -573,7 +586,7 @@ module Steam
         optional :just_posted, :bool, 5
       end
     end
-
+    
     contract_of "proto2" do
       optional :steamid_clan, :fixed64, 1
       optional :clan_account_flags, :uint32, 3
@@ -584,4 +597,4 @@ module Steam
       optional :chat_room_private, :bool, 8
     end
   end
-end
+  end

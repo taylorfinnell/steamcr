@@ -1,72 +1,91 @@
-# # Generated from steammessages_base.proto
+## Generated from steammessages_base.proto
 require "protobuf"
 
 module Steam
+  enum EBanContentCheckResult
+    KEBanContentCheckResultNotScanned = 0
+    KEBanContentCheckResultReset = 1
+    KEBanContentCheckResultNeedsChecking = 2
+    KEBanContentCheckResultVeryUnlikely = 5
+    KEBanContentCheckResultUnlikely = 30
+    KEBanContentCheckResultPossible = 50
+    KEBanContentCheckResultLikely = 75
+    KEBanContentCheckResultVeryLikely = 100
+  end
   enum EProtoClanEventType
-    KEClanOtherEvent                  =  1
-    KEClanGameEvent                   =  2
-    KEClanPartyEvent                  =  3
-    KEClanMeetingEvent                =  4
-    KEClanSpecialCauseEvent           =  5
-    KEClanMusicAndArtsEvent           =  6
-    KEClanSportsEvent                 =  7
-    KEClanTripEvent                   =  8
-    KEClanChatEvent                   =  9
-    KEClanGameReleaseEvent            = 10
-    KEClanBroadcastEvent              = 11
-    KEClanSmallUpdateEvent            = 12
+    KEClanOtherEvent = 1
+    KEClanGameEvent = 2
+    KEClanPartyEvent = 3
+    KEClanMeetingEvent = 4
+    KEClanSpecialCauseEvent = 5
+    KEClanMusicAndArtsEvent = 6
+    KEClanSportsEvent = 7
+    KEClanTripEvent = 8
+    KEClanChatEvent = 9
+    KEClanGameReleaseEvent = 10
+    KEClanBroadcastEvent = 11
+    KEClanSmallUpdateEvent = 12
     KEClanPreAnnounceMajorUpdateEvent = 13
-    KEClanMajorUpdateEvent            = 14
-    KEClanDLCReleaseEvent             = 15
-    KEClanFutureReleaseEvent          = 16
+    KEClanMajorUpdateEvent = 14
+    KEClanDLCReleaseEvent = 15
+    KEClanFutureReleaseEvent = 16
     KEClanESportTournamentStreamEvent = 17
-    KEClanDevStreamEvent              = 18
-    KEClanFamousStreamEvent           = 19
-    KEClanGameSalesEvent              = 20
-    KEClanGameItemSalesEvent          = 21
-    KEClanInGameBonusXPEvent          = 22
-    KEClanInGameLootEvent             = 23
-    KEClanInGamePerksEvent            = 24
-    KEClanInGameChallengeEvent        = 25
-    KEClanInGameContestEvent          = 26
-    KEClanIRLEvent                    = 27
-    KEClanNewsEvent                   = 28
-    KEClanBetaReleaseEvent            = 29
-    KEClanInGameContentReleaseEvent   = 30
-    KEClanFreeTrial                   = 31
-    KEClanSeasonRelease               = 32
-    KEClanSeasonUpdate                = 33
-    KEClanCrosspostEvent              = 34
-    KEClanInGameEventGeneral          = 35
+    KEClanDevStreamEvent = 18
+    KEClanFamousStreamEvent = 19
+    KEClanGameSalesEvent = 20
+    KEClanGameItemSalesEvent = 21
+    KEClanInGameBonusXPEvent = 22
+    KEClanInGameLootEvent = 23
+    KEClanInGamePerksEvent = 24
+    KEClanInGameChallengeEvent = 25
+    KEClanInGameContestEvent = 26
+    KEClanIRLEvent = 27
+    KEClanNewsEvent = 28
+    KEClanBetaReleaseEvent = 29
+    KEClanInGameContentReleaseEvent = 30
+    KEClanFreeTrial = 31
+    KEClanSeasonRelease = 32
+    KEClanSeasonUpdate = 33
+    KEClanCrosspostEvent = 34
+    KEClanInGameEventGeneral = 35
   end
   enum PartnerEventNotificationType
-    KEEventStart          = 0
+    KEEventStart = 0
     KEEventBroadcastStart = 1
-    KEEventMatchStart     = 2
+    KEEventMatchStart = 2
     KEEventPartnerMaxType = 3
   end
-
+  
   struct CMsgIPAddress
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :v4, :fixed32, 1
       optional :v6, :bytes, 2
     end
   end
-
+  
   struct CMsgIPAddressBucket
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :original_ip_address, CMsgIPAddress, 1
       optional :bucket, :fixed64, 2
     end
   end
-
+  
+  struct CMsgGCRoutingProtoBufHeader
+    include Protobuf::Message
+    
+    contract_of "proto2" do
+      optional :dst_gcid_queue, :uint64, 1
+      optional :dst_gc_dir_index, :uint32, 2
+    end
+  end
+  
   struct CMsgProtoBufHeader
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steamid, :fixed64, 1
       optional :client_sessionid, :int32, 2
@@ -89,34 +108,38 @@ module Steam
       optional :is_from_external_source, :bool, 26
       repeated :forward_to_sysid, :uint32, 27
       optional :cm_sysid, :uint32, 28
-      optional :wg_token, :string, 30
       optional :launcher_type, :uint32, 31, default: 0_u32
       optional :realm, :uint32, 32, default: 0_u32
+      optional :timeout_ms, :int32, 33, default: -1
+      optional :debug_source, :string, 34
+      optional :debug_source_string_index, :uint32, 35
+      optional :token_id, :uint64, 36
+      optional :routing_gc, CMsgGCRoutingProtoBufHeader, 37
       optional :ip, :uint32, 15
       optional :ip_v6, :bytes, 29
     end
   end
-
+  
   struct CMsgMulti
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :size_unzipped, :uint32, 1
       optional :message_body, :bytes, 2
     end
   end
-
+  
   struct CMsgProtobufWrapped
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :message_body, :bytes, 1
     end
   end
-
+  
   struct CMsgAuthTicket
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :estate, :uint32, 1
       optional :eresult, :uint32, 2, default: 2_u32
@@ -125,18 +148,17 @@ module Steam
       optional :h_steam_pipe, :uint32, 5
       optional :ticket_crc, :uint32, 6
       optional :ticket, :bytes, 7
+      optional :server_secret, :bytes, 8
     end
   end
-
+  
   struct CCDDBAppDetailCommon
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :appid, :uint32, 1
       optional :name, :string, 2
       optional :icon, :string, 3
-      optional :logo, :string, 4
-      optional :logo_small, :string, 5
       optional :tool, :bool, 6
       optional :demo, :bool, 7
       optional :media, :bool, 8
@@ -144,12 +166,17 @@ module Steam
       optional :friendly_name, :string, 10
       optional :propagation, :string, 11
       optional :has_adult_content, :bool, 12
+      optional :is_visible_in_steam_china, :bool, 13
+      optional :app_type, :uint32, 14
+      optional :has_adult_content_sex, :bool, 15
+      optional :has_adult_content_violence, :bool, 16
+      repeated :content_descriptorids, :uint32, 17
     end
   end
-
+  
   struct CMsgAppRights
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :edit_info, :bool, 1
       optional :publish, :bool, 2
@@ -167,12 +194,13 @@ module Steam
       optional :manage_pricing, :bool, 14
       optional :broadcast_live, :bool, 15
       optional :view_marketing_traffic, :bool, 16
+      optional :edit_store_display_content, :bool, 17
     end
   end
-
+  
   struct CCuratorPreferences
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :supported_languages, :uint32, 1
       optional :platform_windows, :bool, 2
@@ -190,19 +218,19 @@ module Steam
       optional :show_broadcast, :bool, 14
     end
   end
-
+  
   struct CLocalizationToken
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :language, :uint32, 1
       optional :localized_string, :string, 2
     end
   end
-
+  
   struct CClanEventUserNewsTuple
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :clanid, :uint32, 1
       optional :event_gid, :fixed64, 2
@@ -216,10 +244,10 @@ module Steam
       optional :rtime32_last_modified, :uint32, 10
     end
   end
-
+  
   struct CClanMatchEventByRange
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :rtime_before, :uint32, 1
       optional :rtime_after, :uint32, 2
@@ -227,10 +255,10 @@ module Steam
       repeated :events, CClanEventUserNewsTuple, 4
     end
   end
-
+  
   struct CCommunity_ClanAnnouncementInfo
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :gid, :uint64, 1
       optional :clanid, :uint64, 2
@@ -247,12 +275,14 @@ module Steam
       optional :event_gid, :fixed64, 13
       optional :voteupcount, :int32, 14
       optional :votedowncount, :int32, 15
+      optional :ban_check_result, EBanContentCheckResult, 16, default: EBanContentCheckResult::KEBanContentCheckResultNotScanned
+      optional :banned, :bool, 17
     end
   end
-
+  
   struct CClanEventData
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :gid, :fixed64, 1
       optional :clan_steamid, :fixed64, 2
@@ -268,7 +298,7 @@ module Steam
       optional :last_update_steamid, :fixed64, 12
       optional :event_notes, :string, 13
       optional :jsondata, :string, 14
-      # optional :announcement_body, CCommunityClanAnnouncementInfo, 15
+      optional :announcement_body, CCommunityClanAnnouncementInfo, 15
       optional :published, :bool, 16
       optional :hidden, :bool, 17
       optional :rtime32_visibility_start, :uint32, 18
@@ -280,12 +310,16 @@ module Steam
       optional :rtime32_last_modified, :uint32, 24
       optional :news_post_gid, :fixed64, 25
       optional :rtime_mod_reviewed, :uint32, 26
+      optional :featured_app_tagid, :uint32, 27
+      repeated :referenced_appids, :uint32, 28
+      optional :build_id, :uint32, 29
+      optional :build_branch, :string, 30
     end
   end
-
+  
   struct CBilling_Address
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :first_name, :string, 1
       optional :last_name, :string, 2
@@ -299,4 +333,36 @@ module Steam
       optional :phone, :string, 10
     end
   end
-end
+  
+  struct CPackageReservationStatus
+    include Protobuf::Message
+    
+    contract_of "proto2" do
+      optional :packageid, :uint32, 1
+      optional :reservation_state, :int32, 2
+      optional :queue_position, :int32, 3
+      optional :total_queue_size, :int32, 4
+      optional :reservation_country_code, :string, 5
+      optional :expired, :bool, 6
+      optional :time_expires, :uint32, 7
+      optional :time_reserved, :uint32, 8
+    end
+  end
+  
+  struct CMsgKeyValuePair
+    include Protobuf::Message
+    
+    contract_of "proto2" do
+      optional :name, :string, 1
+      optional :value, :string, 2
+    end
+  end
+  
+  struct CMsgKeyValueSet
+    include Protobuf::Message
+    
+    contract_of "proto2" do
+      repeated :pairs, CMsgKeyValuePair, 1
+    end
+  end
+  end

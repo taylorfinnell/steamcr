@@ -1,34 +1,36 @@
-# # Generated from steammessages_clientserver_login.proto
+## Generated from steammessages_clientserver_login.proto
 require "protobuf"
 
 module Steam
+  
   struct CMsgClientHeartBeat
     include Protobuf::Message
-
+    
     contract_of "proto2" do
+      optional :send_reply, :bool, 1
     end
   end
-
+  
   struct CMsgClientServerTimestampRequest
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :client_request_timestamp, :uint64, 1
     end
   end
-
+  
   struct CMsgClientServerTimestampResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :client_request_timestamp, :uint64, 1
       optional :server_timestamp_ms, :uint64, 2
     end
   end
-
+  
   struct CMsgClientSecret
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :version, :uint32, 1
       optional :appid, :uint32, 2
@@ -37,10 +39,18 @@ module Steam
       optional :hmac, :bytes, 5
     end
   end
-
+  
+  struct CMsgClientHello
+    include Protobuf::Message
+    
+    contract_of "proto2" do
+      optional :protocol_version, :uint32, 1
+    end
+  end
+  
   struct CMsgClientLogon
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :protocol_version, :uint32, 1
       optional :deprecated_obfustucated_private_ip, :uint32, 2
@@ -95,16 +105,20 @@ module Steam
       optional :priority_reason, :int32, 104
       optional :embedded_client_secret, CMsgClientSecret, 105
       optional :disable_partner_autogrants, :bool, 106
+      optional :is_steam_deck, :bool, 107
+      optional :access_token, :string, 108
+      optional :is_chrome_os, :bool, 109
+      optional :is_tesla, :bool, 110
     end
   end
-
+  
   struct CMsgClientLogonResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult, :int32, 1, default: 2
-      optional :out_of_game_heartbeat_seconds, :int32, 2
-      optional :in_game_heartbeat_seconds, :int32, 3
+      optional :legacy_out_of_game_heartbeat_seconds, :int32, 2
+      optional :heartbeat_seconds, :int32, 3
       optional :deprecated_public_ip, :uint32, 4
       optional :rtime32_server_time, :fixed32, 5
       optional :account_flags, :uint32, 6
@@ -126,62 +140,64 @@ module Steam
       optional :ogs_data_report_time_window, :int32, 26
       optional :client_instance_id, :uint64, 27
       optional :force_client_update_check, :bool, 28
+      optional :agreement_session_url, :string, 29
+      optional :token_id, :uint64, 30
     end
   end
-
+  
   struct CMsgClientRequestWebAPIAuthenticateUserNonce
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :token_type, :int32, 1, default: -1
     end
   end
-
+  
   struct CMsgClientRequestWebAPIAuthenticateUserNonceResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult, :int32, 1, default: 2
       optional :webapi_authenticate_user_nonce, :string, 11
       optional :token_type, :int32, 3, default: -1
     end
   end
-
+  
   struct CMsgClientLogOff
     include Protobuf::Message
-
+    
     contract_of "proto2" do
     end
   end
-
+  
   struct CMsgClientLoggedOff
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :eresult, :int32, 1, default: 2
     end
   end
-
+  
   struct CMsgClientNewLoginKey
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :unique_id, :uint32, 1
       optional :login_key, :string, 2
     end
   end
-
+  
   struct CMsgClientNewLoginKeyAccepted
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :unique_id, :uint32, 1
     end
   end
-
+  
   struct CMsgClientAccountInfo
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :persona_name, :string, 1
       optional :ip_country, :string, 2
@@ -189,7 +205,6 @@ module Steam
       optional :account_flags, :uint32, 7
       optional :facebook_id, :uint64, 8
       optional :facebook_name, :string, 9
-      optional :steamguard_notify_newmachines, :bool, 14
       optional :steamguard_machine_name_user_chosen, :string, 15
       optional :is_phone_verified, :bool, 16
       optional :two_factor_state, :uint32, 17
@@ -197,20 +212,20 @@ module Steam
       optional :is_phone_needing_reverify, :bool, 19
     end
   end
-
+  
   struct CMsgClientChallengeRequest
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :steamid, :fixed64, 1
     end
   end
-
+  
   struct CMsgClientChallengeResponse
     include Protobuf::Message
-
+    
     contract_of "proto2" do
       optional :challenge, :fixed64, 1
     end
   end
-end
+  end
