@@ -25,7 +25,7 @@ module Steamcr::SteamLanguage
       @path : String
 
       @[JSON::Field]
-      @url : String
+      @url : String?
 
       property url
       property path
