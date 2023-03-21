@@ -194,7 +194,7 @@ module Steamcr
         msg = Protocol::MsgProtobuf(Steam::CMsgClientHeartBeat).new(EMsg::CLIENT_HEART_BEAT)
         write(msg)
         if @debug
-          STDERR.puts "Heartbeat... sleeping #{sleep_time}s"
+          STDERR.puts "\u{2665} ... sleeping #{sleep_time}s"
         end
         sleep sleep_time
       end
