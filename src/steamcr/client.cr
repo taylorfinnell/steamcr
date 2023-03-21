@@ -27,7 +27,7 @@ module Steamcr
     getter gc
 
     @key : Bytes?
-    @steam_id = UInt64::MAX
+    @steam_id : UInt64 = 76561197960265728u64
     @session_id : Int32?
     @connect_tokens : Array(Bytes) = Array(Bytes).new
     @handlers = Array(PacketHandler).new
