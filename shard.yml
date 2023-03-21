@@ -11,7 +11,7 @@ license: MIT
 dependencies:
   openssl_ext:
     github: spider-gazelle/openssl_ext
-    version: 2.2.1
+    version: 2.3.0
   protobuf:
     github: jeromegn/protobuf.cr
     version: 2.3.0
