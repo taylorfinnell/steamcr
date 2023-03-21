@@ -580,7 +580,7 @@ module Csgo
       repeated :failready_account_id_sessions, :uint32, 10
       repeated :vacbanned_account_id_sessions, :uint32, 11
       optional :server_ipaddress_mask, IpAddressMask, 12
-      repeated :notes, CMsgGCCStrike15V2MatchmakingGC2ClientUpdate::Note, 13
+      repeated :notes, CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate::Note, 13
       repeated :penalty_account_id_sessions_green, :uint32, 14
       repeated :insufficientlevel_sessions, :uint32, 15
       repeated :vsncheck_account_id_sessions, :uint32, 16
@@ -611,7 +611,7 @@ module Csgo
       optional :team_id_start, :int32, 7
       optional :team_id_veto1, :int32, 8
       optional :team_id_pickn, :int32, 9
-      repeated :drafts, CDataGCCStrike15V2TournamentMatchDraft::Entry, 10
+      repeated :drafts, CDataGCCStrike15_v2_TournamentMatchDraft::Entry, 10
     end
   end
   
@@ -630,7 +630,7 @@ module Csgo
     
     contract_of "proto2" do
       optional :predictions_pct, :int32, 1
-      optional :draft, CDataGCCStrike15V2TournamentMatchDraft, 4
+      optional :draft, CDataGCCStrike15_v2_TournamentMatchDraft, 4
       repeated :stats, CPreMatchInfoData::TeamStats, 5
       repeated :wins, :int32, 6
     end
@@ -666,7 +666,7 @@ module Csgo
     
     contract_of "proto2" do
       optional :reservationid, :uint64, 1
-      optional :reservation, CMsgGCCStrike15V2MatchmakingGC2ServerReserve, 2
+      optional :reservation, CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve, 2
       optional :map, :string, 3
       optional :gc_reservation_sent, :uint64, 4
       optional :server_version, :uint32, 5
@@ -693,7 +693,7 @@ module Csgo
       optional :direct_udp_ip, :uint32, 2
       optional :direct_udp_port, :uint32, 3
       optional :reservationid, :uint64, 4
-      optional :reservation, CMsgGCCStrike15V2MatchmakingGC2ServerReserve, 5
+      optional :reservation, CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve, 5
       optional :map, :string, 6
       optional :server_address, :string, 7
     end
@@ -712,7 +712,7 @@ module Csgo
     
     contract_of "proto2" do
       optional :reservationid, :uint64, 1
-      optional :reservation, CMsgGCCStrike15V2MatchmakingGC2ServerReserve, 2
+      optional :reservation, CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve, 2
       optional :map, :string, 3
       optional :round, :int32, 4
       repeated :kills, :int32, 5
@@ -723,7 +723,7 @@ module Csgo
       optional :round_result, :int32, 10
       optional :match_result, :int32, 11
       repeated :team_scores, :int32, 12
-      optional :confirm, CMsgGCCStrike15V2MatchmakingGC2ServerConfirm, 13
+      optional :confirm, CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm, 13
       optional :reservation_stage, :int32, 14
       optional :match_duration, :int32, 15
       repeated :enemy_kills, :int32, 16
@@ -736,7 +736,7 @@ module Csgo
       optional :spectators_count_tv, :uint32, 23
       optional :spectators_count_lnk, :uint32, 24
       repeated :enemy_kills_agg, :int32, 25
-      optional :drop_info, CMsgGCCStrike15V2MatchmakingServerRoundStats::DropInfo, 26
+      optional :drop_info, CMsgGCCStrike15_v2_MatchmakingServerRoundStats::DropInfo, 26
       optional :b_switched_teams, :bool, 27
       repeated :enemy_2ks, :int32, 28
       repeated :player_spawned, :int32, 29
@@ -757,7 +757,7 @@ module Csgo
     
     contract_of "proto2" do
       optional :account_id, :uint32, 1
-      optional :ongoingmatch, CMsgGCCStrike15V2MatchmakingGC2ClientReserve, 2
+      optional :ongoingmatch, CMsgGCCStrike15_v2_MatchmakingGC2ClientReserve, 2
       optional :global_stats, GlobalStatistics, 3
       optional :penalty_seconds, :uint32, 4
       optional :penalty_reason, :uint32, 5
@@ -791,7 +791,7 @@ module Csgo
     end
     
     contract_of "proto2" do
-      repeated :settings, CMsgGCCStrike15V2AccountPrivacySettings::Setting, 1
+      repeated :settings, CMsgGCCStrike15_v2_AccountPrivacySettings::Setting, 1
     end
   end
   
@@ -800,7 +800,7 @@ module Csgo
     
     contract_of "proto2" do
       optional :account_id, :uint32, 1
-      optional :abandoned_match, CMsgGCCStrike15V2MatchmakingGC2ClientReserve, 2
+      optional :abandoned_match, CMsgGCCStrike15_v2_MatchmakingGC2ClientReserve, 2
       optional :penalty_seconds, :uint32, 3
       optional :penalty_reason, :uint32, 4
     end
@@ -927,7 +927,7 @@ module Csgo
       optional :account_id, :uint32, 2
       optional :join_token, :uint32, 3
       optional :join_ipp, :uint32, 4
-      optional :res, CMsgGCCStrike15V2MatchmakingGC2ClientReserve, 5
+      optional :res, CMsgGCCStrike15_v2_MatchmakingGC2ClientReserve, 5
       optional :errormsg, :string, 6
     end
   end
@@ -941,7 +941,7 @@ module Csgo
       optional :serverid, :uint64, 3
       optional :server_ip, :uint32, 4
       optional :server_port, :uint32, 5
-      optional :res, CMsgGCCStrike15V2MatchmakingGC2ClientReserve, 6
+      optional :res, CMsgGCCStrike15_v2_MatchmakingGC2ClientReserve, 6
       optional :errormsg, :string, 7
     end
   end
@@ -1003,8 +1003,8 @@ module Csgo
     
     contract_of "proto2" do
       optional :account_id, :uint32, 1
-      optional :range, CMsgGCCStrike15ClientDeepStats::DeepStatsRange, 2
-      repeated :matches, CMsgGCCStrike15ClientDeepStats::DeepStatsMatch, 3
+      optional :range, CMsgGCCStrike15_ClientDeepStats::DeepStatsRange, 2
+      repeated :matches, CMsgGCCStrike15_ClientDeepStats::DeepStatsMatch, 3
     end
   end
   
@@ -1035,7 +1035,7 @@ module Csgo
     
     contract_of "proto2" do
       optional :request_id, :uint32, 1
-      repeated :account_profiles, CMsgGCCStrike15V2MatchmakingGC2ClientHello, 2
+      repeated :account_profiles, CMsgGCCStrike15_v2_MatchmakingGC2ClientHello, 2
     end
   end
   
@@ -1113,8 +1113,8 @@ module Csgo
     include Protobuf::Message
     
     contract_of "proto2" do
-      optional :serverinfo, CMsgGCCStrike15V2MatchmakingServerReservationResponse, 3
-      optional :match_end_quest_data, CMsgGCServerQuestUpdateData, 4
+      optional :serverinfo, CMsgGCCStrike15_v2_MatchmakingServerReservationResponse, 3
+      #optional :match_end_quest_data, CMsgGCServerQuestUpdateData, 4
     end
   end
   
@@ -1239,8 +1239,8 @@ module Csgo
       optional :matchid, :uint64, 1
       optional :matchtime, :uint32, 2
       optional :watchablematchinfo, WatchableMatchInfo, 3
-      optional :roundstats_legacy, CMsgGCCStrike15V2MatchmakingServerRoundStats, 4
-      repeated :roundstatsall, CMsgGCCStrike15V2MatchmakingServerRoundStats, 5
+      optional :roundstats_legacy, CMsgGCCStrike15_v2_MatchmakingServerRoundStats, 4
+      repeated :roundstatsall, CMsgGCCStrike15_v2_MatchmakingServerRoundStats, 5
     end
   end
   
@@ -1270,12 +1270,12 @@ module Csgo
       optional :name, :string, 2
       optional :desc, :string, 3
       optional :picks__deprecated, :uint32, 4
-      repeated :teams, CDataGCCStrike15V2TournamentGroupTeam, 5
+      repeated :teams, CDataGCCStrike15_v2_TournamentGroupTeam, 5
       repeated :stage_ids, :int32, 6
       optional :picklockuntiltime, :uint32, 7
       optional :pickableteams, :uint32, 8
       optional :points_per_pick, :uint32, 9
-      repeated :picks, CDataGCCStrike15V2TournamentGroup::Picks, 10
+      repeated :picks, CDataGCCStrike15_v2_TournamentGroup::Picks, 10
     end
   end
   
@@ -1286,7 +1286,7 @@ module Csgo
       optional :sectionid, :uint32, 1
       optional :name, :string, 2
       optional :desc, :string, 3
-      repeated :groups, CDataGCCStrike15V2TournamentGroup, 4
+      repeated :groups, CDataGCCStrike15_v2_TournamentGroup, 4
     end
   end
   
@@ -1294,7 +1294,7 @@ module Csgo
     include Protobuf::Message
     
     contract_of "proto2" do
-      repeated :sections, CDataGCCStrike15V2TournamentSection, 1
+      repeated :sections, CDataGCCStrike15_v2_TournamentSection, 1
       optional :tournament_event, TournamentEvent, 2
       repeated :tournament_teams, TournamentTeam, 3
     end
@@ -1307,9 +1307,9 @@ module Csgo
       optional :msgrequestid, :uint32, 1
       optional :accountid, :uint32, 2
       optional :servertime, :uint32, 3
-      repeated :matches, CDataGCCStrike15V2MatchInfo, 4
+      repeated :matches, CDataGCCStrike15_v2_MatchInfo, 4
       repeated :streams, TournamentTeam, 5
-      optional :tournamentinfo, CDataGCCStrike15V2TournamentInfo, 6
+      optional :tournamentinfo, CDataGCCStrike15_v2_TournamentInfo, 6
     end
   end
   
@@ -1318,7 +1318,7 @@ module Csgo
     
     contract_of "proto2" do
       optional :eventid, :int32, 1
-      repeated :matches, CDataGCCStrike15V2MatchInfo, 2
+      repeated :matches, CDataGCCStrike15_v2_MatchInfo, 2
     end
   end
   
@@ -1339,7 +1339,7 @@ module Csgo
     
     contract_of "proto2" do
       optional :event_id, :uint32, 1
-      repeated :group_match_team_picks, CMsgGCCStrike15V2Predictions::GroupMatchTeamPick, 2
+      repeated :group_match_team_picks, CMsgGCCStrike15_v2_Predictions::GroupMatchTeamPick, 2
     end
   end
   
@@ -1361,13 +1361,13 @@ module Csgo
       
       contract_of "proto2" do
         optional :sectionid, :int32, 1
-        repeated :slots, CMsgGCCStrike15V2Fantasy::FantasySlot, 2
+        repeated :slots, CMsgGCCStrike15_v2_Fantasy::FantasySlot, 2
       end
     end
     
     contract_of "proto2" do
       optional :event_id, :uint32, 1
-      repeated :teams, CMsgGCCStrike15V2Fantasy::FantasyTeam, 2
+      repeated :teams, CMsgGCCStrike15_v2_Fantasy::FantasyTeam, 2
     end
   end
   
@@ -1440,7 +1440,7 @@ module Csgo
       optional :time_period_seconds, :uint32, 2
       optional :total_gifts_given, :uint32, 3
       optional :total_givers, :uint32, 4
-      repeated :entries, CMsgGCCStrike15V2GiftsLeaderboardResponse::GiftLeaderboardEntry, 5
+      repeated :entries, CMsgGCCStrike15_v2_GiftsLeaderboardResponse::GiftLeaderboardEntry, 5
     end
   end
   
@@ -1719,7 +1719,7 @@ module Csgo
     end
     
     contract_of "proto2" do
-      repeated :entries, CMsgGCCStrike15V2PartySearchResults::Entry, 1
+      repeated :entries, CMsgGCCStrike15_v2_Party_SearchResults::Entry, 1
     end
   end
   
@@ -1746,7 +1746,7 @@ module Csgo
     end
     
     contract_of "proto2" do
-      repeated :players, CMsgGCCStrike15V2AccountRequestCoPlays::Player, 1
+      repeated :players, CMsgGCCStrike15_v2_Account_RequestCoPlays::Player, 1
       optional :servertime, :uint32, 2
     end
   end
@@ -1818,7 +1818,7 @@ module Csgo
     end
     
     contract_of "proto2" do
-      repeated :entries, CMsgGCCStrike15V2ClientPartyWarning::Entry, 1
+      repeated :entries, CMsgGCCStrike15_v2_ClientPartyWarning::Entry, 1
     end
   end
   
@@ -1866,7 +1866,7 @@ module Csgo
     end
     
     contract_of "proto2" do
-      repeated :entries, CMsgGCCStrike15V2ClientPerfReport::Entry, 1
+      repeated :entries, CMsgGCCStrike15_v2_ClientPerfReport::Entry, 1
     end
   end
   

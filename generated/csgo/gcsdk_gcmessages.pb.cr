@@ -317,13 +317,13 @@ module Csgo
       
       contract_of "proto2" do
         optional :language, :string, 1
-        repeated :descriptions, CWorkshopPopulateItemDescriptionsRequest::SingleItemDescription, 2
+        repeated :descriptions, CWorkshop_PopulateItemDescriptions_Request::SingleItemDescription, 2
       end
     end
     
     contract_of "proto2" do
       optional :appid, :uint32, 1
-      repeated :languages, CWorkshopPopulateItemDescriptionsRequest::ItemDescriptionsLanguageBlock, 2
+      repeated :languages, CWorkshop_PopulateItemDescriptions_Request::ItemDescriptionsLanguageBlock, 2
     end
   end
   
@@ -380,11 +380,11 @@ module Csgo
     contract_of "proto2" do
       optional :appid, :uint32, 1
       optional :gameitemid, :uint32, 2
-      repeated :associated_workshop_files, CWorkshopSetItemPaymentRulesRequest::WorkshopItemPaymentRule, 3
-      repeated :partner_accounts, CWorkshopSetItemPaymentRulesRequest::PartnerItemPaymentRule, 4
+      repeated :associated_workshop_files, CWorkshop_SetItemPaymentRules_Request::WorkshopItemPaymentRule, 3
+      repeated :partner_accounts, CWorkshop_SetItemPaymentRules_Request::PartnerItemPaymentRule, 4
       optional :validate_only, :bool, 5
       optional :make_workshop_files_subscribable, :bool, 6
-      optional :associated_workshop_file_for_direct_payments, CWorkshopSetItemPaymentRulesRequest::WorkshopDirectPaymentRule, 7
+      optional :associated_workshop_file_for_direct_payments, CWorkshop_SetItemPaymentRules_Request::WorkshopDirectPaymentRule, 7
     end
   end
   
@@ -422,7 +422,7 @@ module Csgo
     end
     
     contract_of "proto2" do
-      repeated :groups, CGameServersAggregationQueryResponse::Group, 1
+      repeated :groups, CGameServers_AggregationQuery_Response::Group, 1
     end
   end
   
@@ -462,13 +462,13 @@ module Csgo
       
       contract_of "proto2" do
         optional :language, :string, 1
-        repeated :tokens, CProductInfoSetRichPresenceLocalizationRequest::Token, 2
+        repeated :tokens, CProductInfo_SetRichPresenceLocalization_Request::Token, 2
       end
     end
     
     contract_of "proto2" do
       optional :appid, :uint32, 1
-      repeated :languages, CProductInfoSetRichPresenceLocalizationRequest::LanguageSection, 2
+      repeated :languages, CProductInfo_SetRichPresenceLocalization_Request::LanguageSection, 2
       optional :steamid, :uint64, 3
     end
   end

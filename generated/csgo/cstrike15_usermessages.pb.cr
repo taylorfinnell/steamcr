@@ -100,7 +100,7 @@ module Csgo
     contract_of "proto2" do
       optional :name, :string, 1
       optional :show, :bool, 2
-      repeated :subkeys, CCSUsrMsgVGUIMenu::Subkey, 3
+      repeated :subkeys, CCSUsrMsg_VGUIMenu::Subkey, 3
     end
   end
   
@@ -262,7 +262,7 @@ module Csgo
     end
     
     contract_of "proto2" do
-      repeated :player_masks, CCSUsrMsgVoiceMask::PlayerMask, 1
+      repeated :player_masks, CCSUsrMsg_VoiceMask::PlayerMask, 1
       optional :player_mod_enable, :bool, 2
     end
   end
@@ -325,7 +325,7 @@ module Csgo
     
     contract_of "proto2" do
       optional :new_update, :bool, 1
-      repeated :entity_updates, CCSUsrMsgProcessSpottedEntityUpdate::SpottedEntityUpdate, 2
+      repeated :entity_updates, CCSUsrMsg_ProcessSpottedEntityUpdate::SpottedEntityUpdate, 2
     end
   end
   
@@ -474,7 +474,7 @@ module Csgo
     
     contract_of "proto2" do
       optional :version, :int32, 1
-      repeated :stats, CCSUsrMsgPlayerStatsUpdate::Stat, 4
+      repeated :stats, CCSUsrMsg_PlayerStatsUpdate::Stat, 4
       optional :user_id, :int32, 5
       optional :crc, :int32, 6
     end
@@ -615,7 +615,7 @@ module Csgo
     end
     
     contract_of "proto2" do
-      repeated :rank_update, CCSUsrMsgServerRankUpdate::RankUpdate, 1
+      repeated :rank_update, CCSUsrMsg_ServerRankUpdate::RankUpdate, 1
     end
   end
   
@@ -623,7 +623,7 @@ module Csgo
     include Protobuf::Message
     
     contract_of "proto2" do
-      optional :data, CMsgGCCstrike15V2GC2ServerNotifyXPRewarded, 1
+      optional :data, CMsgGCCstrike15_v2_GC2ServerNotifyXPRewarded, 1
     end
   end
   
@@ -753,9 +753,9 @@ module Csgo
     
     contract_of "proto2" do
       optional :xuid, :uint64, 1
-      repeated :facts, CCSUsrMsgSurvivalStats::Fact, 2
-      repeated :users, CCSUsrMsgSurvivalStats::Placement, 3
-      repeated :damages, CCSUsrMsgSurvivalStats::Damage, 5
+      repeated :facts, CCSUsrMsg_SurvivalStats::Fact, 2
+      repeated :users, CCSUsrMsg_SurvivalStats::Placement, 3
+      repeated :damages, CCSUsrMsg_SurvivalStats::Damage, 5
       optional :ticknumber, :int32, 4
     end
   end
@@ -781,7 +781,7 @@ module Csgo
         optional :xuid, :uint64, 2
         optional :name, :string, 3
         optional :teamnumber, :int32, 4
-        optional :nomination, CCSUsrMsgEndOfMatchAllPlayersData::Accolade, 5
+        optional :nomination, CCSUsrMsg_EndOfMatchAllPlayersData::Accolade, 5
         repeated :items, CEconItemPreviewDataBlock, 6
         optional :playercolor, :int32, 7
         optional :isbot, :bool, 8
@@ -789,7 +789,7 @@ module Csgo
     end
     
     contract_of "proto2" do
-      repeated :allplayerdata, CCSUsrMsgEndOfMatchAllPlayersData::PlayerData, 1
+      repeated :allplayerdata, CCSUsrMsg_EndOfMatchAllPlayersData::PlayerData, 1
       optional :scene, :int32, 2
     end
   end
@@ -839,9 +839,9 @@ module Csgo
         optional :terrorist_odds, :int32, 2
         optional :ct_alive, :int32, 3
         optional :t_alive, :int32, 4
-        optional :victim_data, CCSUsrMsgRoundImpactScoreData::RisEvent::Victim, 5
-        optional :objective_data, CCSUsrMsgRoundImpactScoreData::RisEvent::Objective, 6
-        repeated :all_damage_data, CCSUsrMsgRoundImpactScoreData::RisEvent::Damage, 7
+        optional :victim_data, CCSUsrMsg_RoundImpactScoreData::RisEvent::Victim, 5
+        optional :objective_data, CCSUsrMsg_RoundImpactScoreData::RisEvent::Objective, 6
+        repeated :all_damage_data, CCSUsrMsg_RoundImpactScoreData::RisEvent::Damage, 7
       end
     end
     
@@ -856,8 +856,8 @@ module Csgo
     end
     
     contract_of "proto2" do
-      optional :init_conditions, CCSUsrMsgRoundImpactScoreData::InitialConditions, 1
-      repeated :all_ris_event_data, CCSUsrMsgRoundImpactScoreData::RisEvent, 2
+      optional :init_conditions, CCSUsrMsg_RoundImpactScoreData::InitialConditions, 1
+      repeated :all_ris_event_data, CCSUsrMsg_RoundImpactScoreData::RisEvent, 2
     end
   end
   
@@ -873,7 +873,7 @@ module Csgo
     include Protobuf::Message
     
     contract_of "proto2" do
-      optional :stats, CMsgGCCStrike15ClientDeepStats, 1
+      optional :stats, CMsgGCCStrike15_ClientDeepStats, 1
     end
   end
   
@@ -938,7 +938,7 @@ module Csgo
     
     contract_of "proto2" do
       optional :seconds_till_shutdown, :int32, 1
-      optional :reservation, CMsgGCCStrike15V2MatchmakingGC2ServerReserve, 2
+      optional :reservation, CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve, 2
     end
   end
   
@@ -978,7 +978,7 @@ module Csgo
       repeated :crc_part2, :int32, 6
       optional :client_timestamp, :int32, 7
       optional :platform, :int32, 8
-      repeated :itemdetails, CCSUsrMsgUtilMsgResponse::ItemDetail, 9
+      repeated :itemdetails, CCSUsrMsg_UtilMsg_Response::ItemDetail, 9
       optional :itemgroup, :int32, 10
     end
   end

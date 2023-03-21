@@ -217,7 +217,7 @@ module Csgo
       optional :match_item_type, :uint32, 3
       optional :match_item_class, :uint32, 4
       optional :prefix_item_name, :string, 5
-      repeated :attributes, CQuestPublisherAddCommunityItemsToPlayerRequest::Attribute, 6
+      repeated :attributes, CQuest_PublisherAddCommunityItemsToPlayer_Request::Attribute, 6
       optional :note, :string, 7
     end
   end
@@ -253,7 +253,7 @@ module Csgo
     include Protobuf::Message
     
     contract_of "proto2" do
-      repeated :categories, CCommunityGamePersonalDataCategoryInfo, 1
+      repeated :categories, CCommunity_GamePersonalDataCategoryInfo, 1
       optional :app_assets_basename, :string, 2
     end
   end

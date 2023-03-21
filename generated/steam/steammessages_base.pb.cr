@@ -298,7 +298,7 @@ module Steam
       optional :last_update_steamid, :fixed64, 12
       optional :event_notes, :string, 13
       optional :jsondata, :string, 14
-      optional :announcement_body, CCommunityClanAnnouncementInfo, 15
+      optional :announcement_body, CCommunity_ClanAnnouncementInfo, 15
       optional :published, :bool, 16
       optional :hidden, :bool, 17
       optional :rtime32_visibility_start, :uint32, 18

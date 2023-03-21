@@ -201,7 +201,7 @@ module Csgo
       optional :game_id, :fixed64, 2
       optional :eresult, :int32, 3, default: 2
       repeated :stats, CMsgAMGetUserGameStatsResponse::Stats, 4
-      repeated :achievement_blocks, CMsgAMGetUserGameStatsResponse::AchievementBlocks, 5
+      repeated :achievement_blocks, CMsgAMGetUserGameStatsResponse::Achievement_Blocks, 5
     end
   end
   
@@ -564,7 +564,7 @@ module Csgo
     end
     
     contract_of "proto2" do
-      repeated :succeeded_lookups, CMsgGCGetPersonaNamesResponse::PersonaName, 1
+      repeated :succeeded_lookups, CMsgGCGetPersonaNames_Response::PersonaName, 1
       repeated :failed_lookup_steamids, :fixed64, 2
     end
   end

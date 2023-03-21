@@ -160,7 +160,7 @@ module Csgo
     end
     
     contract_of "proto2" do
-      repeated :cvars, CMsgCVars::CVar, 1
+      repeated :cvars, CMsg_CVars::CVar, 1
     end
   end
   
@@ -168,7 +168,7 @@ module Csgo
     include Protobuf::Message
     
     contract_of "proto2" do
-      optional :convars, CMsgCVars, 1
+      optional :convars, CMsg_CVars, 1
     end
   end
   
@@ -245,7 +245,7 @@ module Csgo
     contract_of "proto2" do
       optional :data, :bytes, 1
       optional :xuid, :fixed64, 2
-      optional :format, VoiceDataFormatT, 3, default: VoiceDataFormatT::VOICEDATAFORMATENGINE
+      optional :format, VoiceDataFormat_t, 3, default: VoiceDataFormatT::VOICEDATAFORMATENGINE
       optional :sequence_bytes, :int32, 4
       optional :section_number, :uint32, 5
       optional :uncompressed_sample_offset, :uint32, 6
@@ -310,7 +310,7 @@ module Csgo
     include Protobuf::Message
     
     contract_of "proto2" do
-      optional :convars, CMsgCVars, 1
+      optional :convars, CMsg_CVars, 1
     end
   end
   
@@ -354,7 +354,7 @@ module Csgo
   struct CSVCMsg_ClassInfo
     include Protobuf::Message
     
-    struct class_t
+    struct Class_t
       include Protobuf::Message
       
       contract_of "proto2" do
@@ -366,14 +366,14 @@ module Csgo
     
     contract_of "proto2" do
       optional :create_on_client, :bool, 1
-      repeated :classes, CSVCMsgClassInfo::ClassT, 2
+      repeated :classes, CSVCMsg_ClassInfo::Class_t, 2
     end
   end
   
   struct CSVCMsg_SendTable
     include Protobuf::Message
     
-    struct sendprop_t
+    struct Sendprop_t
       include Protobuf::Message
       
       contract_of "proto2" do
@@ -393,7 +393,7 @@ module Csgo
       optional :is_end, :bool, 1
       optional :net_table_name, :string, 2
       optional :needs_decoder, :bool, 3
-      repeated :props, CSVCMsgSendTable::SendpropT, 4
+      repeated :props, CSVCMsg_SendTable::Sendprop_t, 4
     end
   end
   
@@ -466,7 +466,7 @@ module Csgo
       optional :audible_mask, :int32, 4
       optional :voice_data, :bytes, 5
       optional :caster, :bool, 6
-      optional :format, VoiceDataFormatT, 7, default: VoiceDataFormatT::VOICEDATAFORMATENGINE
+      optional :format, VoiceDataFormat_t, 7, default: VoiceDataFormatT::VOICEDATAFORMATENGINE
       optional :sequence_bytes, :int32, 8
       optional :section_number, :uint32, 9
       optional :uncompressed_sample_offset, :uint32, 10
@@ -559,7 +559,7 @@ module Csgo
   struct CSVCMsg_GameEvent
     include Protobuf::Message
     
-    struct key_t
+    struct Key_t
       include Protobuf::Message
       
       contract_of "proto2" do
@@ -578,7 +578,7 @@ module Csgo
     contract_of "proto2" do
       optional :event_name, :string, 1
       optional :eventid, :int32, 2
-      repeated :keys, CSVCMsgGameEvent::KeyT, 3
+      repeated :keys, CSVCMsg_GameEvent::Key_t, 3
       optional :passthrough, :int32, 4
     end
   end
@@ -586,7 +586,7 @@ module Csgo
   struct CSVCMsg_GameEventList
     include Protobuf::Message
     
-    struct key_t
+    struct Key_t
       include Protobuf::Message
       
       contract_of "proto2" do
@@ -595,18 +595,18 @@ module Csgo
       end
     end
     
-    struct descriptor_t
+    struct Descriptor_t
       include Protobuf::Message
       
       contract_of "proto2" do
         optional :eventid, :int32, 1
         optional :name, :string, 2
-        repeated :keys, CSVCMsgGameEventList::KeyT, 3
+        repeated :keys, CSVCMsg_GameEvent::Key_t, 3
       end
     end
     
     contract_of "proto2" do
-      repeated :descriptors, CSVCMsgGameEventList::DescriptorT, 1
+      repeated :descriptors, CSVCMsg_GameEventList::Descriptor_t, 1
     end
   end
   
@@ -637,7 +637,7 @@ module Csgo
   struct CSVCMsg_Sounds
     include Protobuf::Message
     
-    struct sounddata_t
+    struct Sounddata_t
       include Protobuf::Message
       
       contract_of "proto2" do
@@ -663,7 +663,7 @@ module Csgo
     
     contract_of "proto2" do
       optional :reliable_sound, :bool, 1
-      repeated :sounds, CSVCMsgSounds::SounddataT, 2
+      repeated :sounds, CSVCMsg_Sounds::Sounddata_t, 2
     end
   end
   

@@ -394,7 +394,7 @@ module Steam
       contract_of "proto2" do
         optional :connections_udp, :uint32, 1
         optional :connections_tcp, :uint32, 2
-        optional :stats_udp, CMsgClientConnectionStats::StatsUDP, 3
+        optional :stats_udp, CMsgClientConnectionStats::Stats_UDP, 3
         optional :pkts_abandoned, :uint64, 4
         optional :conn_req_received, :uint64, 5
         optional :pkts_resent, :uint64, 6
@@ -416,8 +416,8 @@ module Steam
     end
     
     contract_of "proto2" do
-      optional :stats_logon, CMsgClientConnectionStats::StatsLogon, 1
-      optional :stats_vconn, CMsgClientConnectionStats::StatsVConn, 2
+      optional :stats_logon, CMsgClientConnectionStats::Stats_Logon, 1
+      optional :stats_vconn, CMsgClientConnectionStats::Stats_VConn, 2
     end
   end
   
@@ -434,7 +434,7 @@ module Steam
     end
     
     contract_of "proto2" do
-      repeated :server_types_available, CMsgClientServersAvailable::ServerTypesAvailable, 1
+      repeated :server_types_available, CMsgClientServersAvailable::Server_Types_Available, 1
       optional :server_type_for_auth_services, :uint32, 2
     end
   end
