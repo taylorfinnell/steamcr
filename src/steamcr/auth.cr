@@ -40,7 +40,7 @@ module Steamcr
         else
           @client.steam_id = msg.header.proto.steamid.not_nil!
           @client.session_id = msg.header.proto.client_sessionid.not_nil!
-          spawn @client.heartbeat(msg.body.out_of_game_heartbeat_seconds.not_nil!)
+          spawn @client.heartbeat(msg.body.heartbeat_seconds.not_nil!)
           @client.emit(OnLogonEvent.new)
         end
       when EMsg::CLIENT_UPDATE_MACHINE_AUTH
