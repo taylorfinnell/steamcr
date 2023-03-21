@@ -10,11 +10,17 @@ module Steamcr
       @socket : TCPSocket?
       @key : Bytes?
 
-      def connect(server)
+      def connect(server : Server)
         @socket = TCPSocket.new(server.host, server.port)
       end
 
+      def close
+        @socket.not_nil!.close if @socket
+      end
+
       def read : Bytes?
+        return nil unless @socket
+
         packet_size = read_header
         packet_data = Bytes.new(packet_size)
 
